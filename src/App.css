@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bg: url("./assets/bg.jpg")
+}
+
+
+
+body {
+  background-image: var(--main-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
