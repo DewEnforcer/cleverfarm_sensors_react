@@ -1,5 +1,5 @@
 export default function SensorsDetail() {
   return (
-    <div></div>
+    <div>Sensors detail</div>
   )
 }

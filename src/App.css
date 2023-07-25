@@ -7,8 +7,6 @@
   --main-bg: url("./assets/bg.jpg")
 }
 
-
-
 body {
   background-image: var(--main-bg);
   background-repeat: no-repeat;

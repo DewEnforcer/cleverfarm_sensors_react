@@ -1,30 +1,23 @@
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
-import Header from './components/general/Header';
-import Home from './components/Home';
+import { RouterProvider } from 'react-router-dom';
+import SensorsContext from './context/SensorsContext';
 
-import { ThemeProvider, createTheme} from '@mui/material/styles';
+import sensorsMock from "./sensors/sensors.json";
+import Sensor from './types/Sensor';
 
+import router from "./utils/router";
+import theme from "./utils/theme";
+
+import { ThemeProvider} from '@mui/material/styles';
 import './App.css'
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#008267"
-    },
-  },
-});
+const data = sensorsMock as Sensor[];
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Header />}>
-      <Route index element={<Home />} />
-    </Route>
-  )
-)
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router}/>
+      <SensorsContext.Provider value={data}>
+        <RouterProvider router={router}/>
+      </SensorsContext.Provider>
     </ThemeProvider>
   )
 }
