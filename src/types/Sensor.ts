@@ -1,7 +1,7 @@
 interface Sensor {
-    id: String,
-    name: String,
-    description: String | null,
+    id: string,
+    name: string,
+    description: string | null,
     coordinates: number[]
 }
 

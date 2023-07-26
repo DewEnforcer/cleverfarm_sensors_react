@@ -1,12 +1,32 @@
+/*CONTENTS OF STYLESHEET*/
+/*
+1. General
+  1.1 - Default styles, vars
+  1.2 - body
+  1.3 - header
+  1.4 - main
+2. Sensors overview
+3. Sensors details
+*/
+
+/*1. General*/
+/*1.1*/
 * {
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --main-bg: url("./assets/bg.jpg")
-}
+  --main-bg: url("./assets/bg.jpg");
+  --main-left-offset: 2vw;
+  --main-right-offset: 2vw;
+  --main-top-offset: 2.5vw;
+  --main-bottom-offset: 2.5vw;
+  --header-height: 64px;
 
+  --section-title-offset-bottom: 1em;
+}
+/*1.2*/
 body {
   background-image: var(--main-bg);
   background-repeat: no-repeat;
@@ -14,3 +34,25 @@ body {
   background-position: center;
   height: 100vh;
 }
+/*1.3*/
+header a {
+  text-decoration: none;
+  color: unset !important;
+}
+/*1.4*/
+main {
+  min-height: calc(100vh - var(--main-top-offset) - var(--main-bottom-offset) - var(--header-height));
+  overflow-y: auto;
+  padding: var(--main-top-offset) var(--main-right-offset) var(--main-bottom-offset) var(--main-left-offset);
+  margin: 0 var(--main-right-offset) 0 var(--main-left-offset);
+  background-color: rgba(250,250,250,0.8);
+}
+
+/*1. Sensors overview*/
+.sensors-overview {
+
+}
+.sensors-overview .section-title {
+  margin-bottom: var(--section-title-offset-bottom);
+}
+/*2. Sensors details*/
