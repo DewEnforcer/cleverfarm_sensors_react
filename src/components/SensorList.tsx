@@ -3,7 +3,11 @@ import CardList from "./general/CardList";
 import Sensor from "../types/Sensor";
 import SensorCard from "./SensorCard";
 
-export default function SensorList({items}: {items: Sensor[]}) {
+interface ISensorListProps {
+  items: Sensor[]
+}
+
+export default function SensorList({items}: ISensorListProps) {
   return (
     <Box className={"sensor-list"}>
         <Grid container>

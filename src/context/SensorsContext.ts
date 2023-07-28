@@ -1,8 +1,6 @@
 import React from "react";
 import Sensor from "../types/Sensor";
 
-const defVal: Sensor[] = [];
-
-const SensorsContext = React.createContext(defVal);
+const SensorsContext = React.createContext<Sensor[]>([]);
 
 export default SensorsContext;

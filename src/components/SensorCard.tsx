@@ -9,7 +9,11 @@ import { blue } from '@mui/material/colors';
 import { nameToCapital } from '../utils/card';
 import { Link } from 'react-router-dom';
 
-export default function SensorCard({item} : {item: Sensor}) {
+interface ISensorCardProps {
+  item: Sensor
+}
+
+export default function SensorCard({item} : ISensorCardProps) {
   const coordinatesToString = (coords: number[]) => {
     if (!coords.length) return ``;
 
