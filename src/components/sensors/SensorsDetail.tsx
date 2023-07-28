@@ -1,9 +1,10 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 import { Box, Container } from "@mui/material";
 import SectionTitle from "../general/SectionTitle";
 import Text from "../general/Text";
 import SensorCoordinatesBox from "./SensorCoordinatesBox";
 import { ISensorDetailLoaderReturnObj } from "../../loaders/sensorDetailLoader";
+import OlMap from "../general/OlMap";
 
 export default function SensorsDetail() {
   const SECTION_TITLE_LABEL = "Sensor detail";
@@ -24,6 +25,7 @@ export default function SensorsDetail() {
         <SectionTitle label="Geography information" variant="subtitle2"/>
         <SensorCoordinatesBox lattitudeX={lattitudeX} lattitudeY={lattitudeY}/>
       </Box>
+      <OlMap/>
     </Container>
   )
 }

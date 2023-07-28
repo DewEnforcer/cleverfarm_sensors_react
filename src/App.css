@@ -5,6 +5,7 @@
   1.2 - body
   1.3 - header
   1.4 - main
+  1.5. - map
 2. Sensors overview
 3. Sensors details
 */
@@ -46,6 +47,11 @@ main {
   padding: var(--main-top-offset) var(--main-right-offset) var(--main-bottom-offset) var(--main-left-offset);
   margin: 0 var(--main-right-offset) 0 var(--main-left-offset);
   background-color: rgba(250,250,250,0.8);
+}
+/*1.5 map*/
+
+#map {
+  height: 50vw;
 }
 
 /*1. Sensors overview*/
