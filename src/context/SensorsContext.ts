@@ -1,5 +1,5 @@
 import React from "react";
-import Sensor from "../types/Sensor";
+import Sensor from "../interfaces/Sensor";
 
 const SensorsContext = React.createContext<Sensor[]>([]);
 

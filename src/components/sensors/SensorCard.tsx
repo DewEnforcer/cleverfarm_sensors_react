@@ -3,10 +3,10 @@ import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from "@mui/material/Button";
-import Sensor from '../types/Sensor';
+import Sensor from '../../interfaces/Sensor';
 import { Avatar } from '@mui/material';
 import { blue } from '@mui/material/colors';
-import { nameToCapital } from '../utils/card';
+import { nameToCapital } from '../../utils/card';
 import { Link } from 'react-router-dom';
 
 interface ISensorCardProps {

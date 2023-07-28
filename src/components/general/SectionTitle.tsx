@@ -26,9 +26,7 @@ export default function SectionTitle({label, variant} : ISectionTitleProps) {
 
   return (
     <Box>
-      <Text {...config} className="section-title">
-        {label}
-      </Text>
+      <Text {...config} className={"section-title"}>{label}</Text>
     </Box>
   )
 }

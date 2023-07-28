@@ -2,7 +2,7 @@ import { RouterProvider } from 'react-router-dom';
 import SensorsContext from './context/SensorsContext';
 
 import sensorsMock from "./sensors/sensors.json";
-import Sensor from './types/Sensor';
+import Sensor from './interfaces/Sensor';
 
 import router from "./utils/router";
 import theme from "./utils/theme";

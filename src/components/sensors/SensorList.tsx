@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/material";
-import CardList from "./general/CardList";
-import Sensor from "../types/Sensor";
+import CardList from "../general/CardList";
+import Sensor from "../../interfaces/Sensor";
 import SensorCard from "./SensorCard";
 
 interface ISensorListProps {

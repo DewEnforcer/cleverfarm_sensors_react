@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import SensorList from "../SensorList";
+import SensorList from "./SensorList";
 import SectionTitle from "../general/SectionTitle";
 import { useContext } from "react";
 import SensorsContext from "../../context/SensorsContext";
