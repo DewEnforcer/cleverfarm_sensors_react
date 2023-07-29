@@ -8,13 +8,16 @@ import Icon from "ol/style/Icon";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
 import { useGeographic } from "ol/proj";
+import {defaults as defaultControls} from 'ol/control.js';
 
 import { defaultZoom, pointData } from "../types/map";
+import { ICustomController } from "../interfaces/CustomController";
+import CustomController from "../openlayer/CustomController";
 
 type popoverHideFnType = () => any;
 type popoverShowFnType = (x: number, y: number, properties: any) => any;
 
-export const createMap = (target: string, defaultZoom: defaultZoom, pointData: pointData | null, mapEl: React.RefObject<HTMLDivElement>, popoverEl?: React.RefObject<HTMLDivElement>) => {
+export const createMap = (target: string, defaultZoom: defaultZoom, pointData: pointData | null, mapEl: React.RefObject<HTMLDivElement>, customControls?: ICustomController[], popoverEl?: React.RefObject<HTMLDivElement>) => {
     //prevent duplicate map, should not happen in real env, but check for it anyway
     const copiedChildren = mapEl.current?.children ? [...mapEl.current.children] : [];
     
@@ -31,9 +34,13 @@ export const createMap = (target: string, defaultZoom: defaultZoom, pointData: p
     const centerLong = pointData?.longitude ?? 0;
     const centerLat = pointData?.latitude ?? 0;
 
-    useGeographic()
+    useGeographic();
+    
+
+    const customControllersComponents = customControls?.map(cC => createCustomController(cC));
 
     const map = new Map({
+        controls: defaultControls().extend(customControllersComponents ?? []),
         layers: layersArr,
         target: target,
         view: new View({
@@ -119,4 +126,19 @@ export const createPointerVectorLayer = (mapPointerData: pointData) => {
   });
 
   return vectorLayer;
+}
+
+export const createCustomController = (options: ICustomController) => {
+    const controller = new CustomController(options)
+
+    return controller;
+}
+//custom control fns
+export const resetMapView = (map: Map, longitude: number, latitude: number, zoom: defaultZoom) => {
+  useGeographic();
+
+  map.setView(new View({
+      center: [longitude ,latitude],
+      zoom: zoom
+  }));
 }

@@ -1,7 +1,7 @@
 export type pointData = {
     latitude: number,
     longitude: number,
-    iconSource: string,
+    iconSource?: string,
     name: string,
 }
 

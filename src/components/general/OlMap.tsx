@@ -7,13 +7,15 @@ import { Box } from "@mui/material";
 import MapPopover from "./MapPopover";
 
 import "ol/ol.css";
+import { ICustomController } from "../../interfaces/CustomController";
 
 interface IOlMapProps {
   pointData: pointData,
-  zoomLevel?: defaultZoom
+  zoomLevel?: defaultZoom,
+  customControls: ICustomController[]
 }
 
-export default function OlMap({pointData, zoomLevel}: IOlMapProps) {
+export default function OlMap({pointData, zoomLevel, customControls}: IOlMapProps) {
   const mapEl = useRef<HTMLDivElement>(null);
   const popoverEl = useRef<HTMLDivElement>(null);
 
@@ -33,8 +35,8 @@ export default function OlMap({pointData, zoomLevel}: IOlMapProps) {
     const targetId = mapEl.current?.id;
 
     if (!targetId) return;
-  
-    const newMapData = createMap(targetId, zoomLevel ?? DEFAULT_ZOOM_LEVEL, pointData, mapEl, popoverEl);
+
+    const newMapData = createMap(targetId, zoomLevel ?? DEFAULT_ZOOM_LEVEL, pointData, mapEl, customControls, popoverEl);
 
     if (!newMapData || !newMapData.map) return;
 

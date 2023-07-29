@@ -57,6 +57,19 @@ main {
 }
 .map-wrapper .map-popover {
 }
+.map-wrapper .map .reset-view-controller {
+    top: 65px;
+    left: 0.5em;
+}
+.map-wrapper .map .ol-custom-controller {
+}
+.map-wrapper .map .ol-custom-controller button {
+  cursor: pointer;
+  padding-top: 4px;
+}
+.map-wrapper .map .ol-control button {
+  cursor: pointer;
+}
 
 #map {
   height: 50vw;

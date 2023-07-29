@@ -4,11 +4,10 @@ import SectionTitle from "../general/SectionTitle";
 import Text from "../general/Text";
 import SensorCoordinatesBox from "./SensorCoordinatesBox";
 import { ISensorDetailLoaderReturnObj } from "../../loaders/sensorDetailLoader";
-import OlMap from "../general/OlMap";
+import SensorMap from "./SensorMap";
 
 export default function SensorsDetail() {
   const SECTION_TITLE_LABEL = "Sensor detail";
-  const SENSOR_ICON_SRC = "/src/assets/map-pointer-xs.png"; //move to cfg
 
   const {sensor} = useLoaderData() as ISensorDetailLoaderReturnObj;
   
@@ -17,9 +16,9 @@ export default function SensorsDetail() {
   const pointData = {
     latitude: latitude,
     longitude: longitude,
-    iconSource: SENSOR_ICON_SRC,
     name: sensor.name
   }
+
   
   //i am aware that description is only required in the overview (in card), 
   //but it does not make any sense from UI perspective, in fact, 
@@ -35,7 +34,7 @@ export default function SensorsDetail() {
         <SectionTitle label="Geography information" variant="subtitle2"/>
         <SensorCoordinatesBox latitude={latitude} longitude={longitude}/>
       </Box>
-      <OlMap pointData={pointData}/>
+      <SensorMap pointData={pointData}/>
     </Container>
   )
 }
