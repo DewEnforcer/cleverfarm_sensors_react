@@ -49,6 +49,14 @@ main {
   background-color: rgba(250,250,250,0.8);
 }
 /*1.5 map*/
+.map-wrapper {
+  position: relative;
+}
+.map-wrapper .map {
+
+}
+.map-wrapper .map-popover {
+}
 
 #map {
   height: 50vw;

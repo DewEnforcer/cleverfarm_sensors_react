@@ -1,4 +1,4 @@
-import { Feature, Map } from "ol";
+import { Feature, Map, MapEvent, Overlay } from "ol";
 import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
 import View from "ol/View";
@@ -11,12 +11,19 @@ import { useGeographic } from "ol/proj";
 
 import { defaultZoom, pointData } from "../types/map";
 
+type popoverHideFnType = () => any;
+type popoverShowFnType = (x: number, y: number, properties: any) => any;
 
-export const createMap = (target: string, defaultZoom: defaultZoom, pointData: pointData | null, mapEl: React.RefObject<HTMLDivElement>) => {
+export const createMap = (target: string, defaultZoom: defaultZoom, pointData: pointData | null, mapEl: React.RefObject<HTMLDivElement>, popoverEl?: React.RefObject<HTMLDivElement>) => {
     //prevent duplicate map, should not happen in real env, but check for it anyway
-    if (mapEl.current?.children.length) return;
+    const copiedChildren = mapEl.current?.children ? [...mapEl.current.children] : [];
+    
+    const oldMapEl = copiedChildren.find(c => c.classList.contains("ol-viewport"));
+    
+    if (oldMapEl) return;
 
     const layersArr = [];
+    let popover;
 
     layersArr.push(createOSMTileVectorLayer(new OSM()));
     if (pointData) layersArr.push(createPointerVectorLayer(pointData));
@@ -34,12 +41,54 @@ export const createMap = (target: string, defaultZoom: defaultZoom, pointData: p
           zoom: defaultZoom,
         }),
     });
+    
+    if (popoverEl && popoverEl.current && map) popover = createPopoverOverlay(map, popoverEl.current);
 
-    return map;
+    return {map, popover};
 }
 
 export const createOSMTileVectorLayer = (source: OSM) => {
   return new TileLayer({source})
+}
+
+export const createPopoverHook = (map: Map, showFn: popoverShowFnType, hideFn: popoverHideFnType) => {
+  const closePopover = () => {
+    hideFn();
+  }
+
+  map.on("click", function (evt: any) {
+    const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+      return feature;
+    });
+
+    if (!feature) return closePopover();
+
+    const [x, y] = evt.coordinate;
+
+    showFn(x,y, feature.getProperties());
+  })
+
+  map.on('pointermove', function (e) {
+    const pixel = map.getEventPixel(e.originalEvent);
+    const hit = map.hasFeatureAtPixel(pixel);
+
+    const target = map.getTarget();
+    if (!target || typeof target === "string" || !hit) return;
+
+    target.style.cursor = "pointer";
+  })
+}
+
+export const createPopoverOverlay = (map: Map, popoverEl: HTMLDivElement) => {
+  const popup = new Overlay({
+    element: popoverEl,
+    positioning: 'bottom-center',
+    stopEvent: false,
+  });
+
+  map.addOverlay(popup);
+  
+  return popup;
 }
 
 export const createPointerVectorLayer = (mapPointerData: pointData) => {
