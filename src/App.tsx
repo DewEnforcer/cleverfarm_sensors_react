@@ -1,23 +1,20 @@
 import { RouterProvider } from 'react-router-dom';
-import SensorsContext from './context/SensorsContext';
-
-import sensorsMock from "./sensors/sensors.json";
-import Sensor from './interfaces/Sensor';
 
 import router from "./utils/router";
 import theme from "./utils/theme";
 
 import { ThemeProvider} from '@mui/material/styles';
 import './App.css'
+import { Provider } from 'react-redux';
+import store from './store';
 
-const data = sensorsMock as Sensor[];
 
-function App() {
+ function App() {
   return (
     <ThemeProvider theme={theme}>
-      <SensorsContext.Provider value={data}>
+      <Provider store={store}>
         <RouterProvider router={router}/>
-      </SensorsContext.Provider>
+      </Provider>
     </ThemeProvider>
   )
 }

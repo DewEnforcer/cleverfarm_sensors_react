@@ -1,17 +1,25 @@
-import { useLoaderData } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { Box } from "@mui/material";
 import SectionTitle from "../general/SectionTitle";
 import Text from "../general/Text";
 import SensorCoordinatesBox from "./SensorCoordinatesBox";
-import { ISensorDetailLoaderReturnObj } from "../../loaders/sensorDetailLoader";
 import SensorMap from "./SensorMap";
 import SectionContainer from "../muiCustom/SectionContainer";
 import Navigator from "../general/Navigator";
 import { ArrowBackIosNewTwoTone } from "@mui/icons-material";
+import {useSelector} from "react-redux";
+import { RootState } from "../../store";
+import SensorsDetailError from "../errors/SensorsDetailError";
 
 export default function SensorsDetail() {
-  const {sensor} = useLoaderData() as ISensorDetailLoaderReturnObj;
+  const sensors = useSelector((state: RootState) => state.sensors.value);
+
+  const {id} = useParams();
+
+  const sensor = sensors.find(s => s.id === id);
   
+  if (!sensor) return <SensorsDetailError/>
+
   const [latitude, longitude] = sensor.coordinates;
 
   const pointData = {
