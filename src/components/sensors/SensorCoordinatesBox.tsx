@@ -2,20 +2,20 @@ import { Box } from "@mui/material"
 import Text from "../general/Text"
 
 interface ISensorCoordinatesBoxProps {
-    lattitudeX: number
-    lattitudeY: number,
+    latitude: number
+    longitude: number,
 }
 
-export default function SensorCoordinatesBox({lattitudeX, lattitudeY} : ISensorCoordinatesBoxProps) {
+export default function SensorCoordinatesBox({latitude, longitude} : ISensorCoordinatesBoxProps) {
   return (
     <Box>
         <Box>
-            <Text>Lattitude X: </Text>
-            <Text>{lattitudeX}</Text>
+            <Text>latitude X: </Text>
+            <Text>{latitude}</Text>
         </Box>
         <Box>
-            <Text>Lattitude Y: </Text>
-            <Text>{lattitudeY}</Text>
+            <Text>latitude Y: </Text>
+            <Text>{longitude}</Text>
         </Box>
     </Box>
   )

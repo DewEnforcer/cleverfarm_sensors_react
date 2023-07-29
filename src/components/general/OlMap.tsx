@@ -1,45 +1,38 @@
-import { Button, setRef } from "@mui/material";
 import { useEffect, useState, useRef } from "react";
 import { createMap } from "../../utils/map";
 import { Map } from 'ol';
+import { defaultZoom, pointData } from "../../types/map";
 
-export default function OlMap() {
+import { Box } from "@mui/material";
+
+import "ol/ol.css";
+
+interface IOlMapProps {
+  pointData: pointData,
+  zoomLevel?: defaultZoom
+}
+
+export default function OlMap({pointData, zoomLevel}: IOlMapProps) {
   const mapEl = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<Map | null>(null);
+  const [map, setMap] = useState<Map | null>(null); //might not be needed, refactor in the future
+
+  const DEFAULT_ZOOM_LEVEL = 8; //move to config
 
   useEffect(() => {
-    const newMap = createMap("map", mapEl);
+    const targetId = mapEl.current?.id;
+
+    if (!targetId) return;
+
+    const newMap = createMap(targetId, zoomLevel ?? DEFAULT_ZOOM_LEVEL, pointData, mapEl);
 
     if (!newMap) return;
 
     setMap(newMap);
   }, []);
 
-  const handleZoomIn = () => {
-    if (!map) return;
-    
-    const view = map.getView();
-    const zoom = view.getZoom();
-    if (!zoom) return;
-    view.setZoom(zoom + 1);
-  }
-  const handleZoomOut = () => {
-    
-    if (!map) return;
-    
-    const view = map.getView();
-    const zoom = view.getZoom(); 
-    if (!zoom) return;
-    view.setZoom(zoom - 1);
-  }
-
   return (
-    <div className="wrapper">
-      <div ref={mapEl} id="map" className="map" tabIndex={0}>
-
-      </div>
-      <Button onClick={handleZoomIn}>Zoom in</Button>
-      <Button onClick={handleZoomOut}>Zoom out</Button>
-    </div>
+    <Box className="wrapper">
+      <div ref={mapEl} id="map" className="map" tabIndex={0}></div>
+    </Box>
   )
 }
