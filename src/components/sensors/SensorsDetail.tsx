@@ -1,14 +1,15 @@
-import { Link, useLoaderData } from "react-router-dom"
-import { Box, Container } from "@mui/material";
+import { useLoaderData } from "react-router-dom"
+import { Box } from "@mui/material";
 import SectionTitle from "../general/SectionTitle";
 import Text from "../general/Text";
 import SensorCoordinatesBox from "./SensorCoordinatesBox";
 import { ISensorDetailLoaderReturnObj } from "../../loaders/sensorDetailLoader";
 import SensorMap from "./SensorMap";
+import SectionContainer from "../muiCustom/SectionContainer";
+import Navigator from "../general/Navigator";
+import { ArrowBackIosNewTwoTone } from "@mui/icons-material";
 
 export default function SensorsDetail() {
-  const SECTION_TITLE_LABEL = "Sensor detail";
-
   const {sensor} = useLoaderData() as ISensorDetailLoaderReturnObj;
   
   const [latitude, longitude] = sensor.coordinates;
@@ -25,16 +26,15 @@ export default function SensorsDetail() {
   //i believe it should be the other way around if we want the description only in one place
 
   return (
-    <Container maxWidth={false}>
-      <Link to={'..'}>Go back</Link>
-      <SectionTitle label={SECTION_TITLE_LABEL}/>
+    <SectionContainer maxWidth={false}>
+      <Navigator to={".."}><ArrowBackIosNewTwoTone fontSize="small"/>To overview...</Navigator>
       <SectionTitle label={sensor?.name ?? "Unknown sensor"} variant="subtitle2"/>
       {sensor?.description && <Text>{sensor.description}</Text>}
       <Box>
-        <SectionTitle label="Geography information" variant="subtitle2"/>
+        <Text variant="h6">Geography information:</Text>
         <SensorCoordinatesBox latitude={latitude} longitude={longitude}/>
       </Box>
       <SensorMap pointData={pointData}/>
-    </Container>
+    </SectionContainer>
   )
 }

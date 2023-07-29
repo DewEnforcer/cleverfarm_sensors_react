@@ -6,6 +6,7 @@
   1.3 - header
   1.4 - main
   1.5. - map
+  1.6. - nav related
 2. Sensors overview
 3. Sensors details
 */
@@ -70,9 +71,18 @@ main {
 .map-wrapper .map .ol-control button {
   cursor: pointer;
 }
-
+/*1.6. nav related*/
+.navigator-link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0 5px;
+}
 #map {
-  height: 50vw;
+  height: 40vh;
 }
 
 /*1. Sensors overview*/

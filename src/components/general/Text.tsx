@@ -4,9 +4,9 @@ export default function Text({children, ...restprops}: TypographyProps) {
   return (
     <Typography 
         className={"custom-text"}
+        fontSize={16}
         sx={{
             fontFamily: "Roboto",
-            fontSize: 16,
             textDecoration: "none"
         }}
         {...restprops}

@@ -2,12 +2,11 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from "@mui/material/Button";
 import Sensor from '../../interfaces/Sensor';
-import { Avatar } from '@mui/material';
-import { blue } from '@mui/material/colors';
-import { nameToCapital } from '../../utils/card';
-import { Link } from 'react-router-dom';
+import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+import Text from '../general/Text';
+import Navigator from '../general/Navigator';
+import DefaultAvatar from '../muiCustom/DefaultAvatar';
 
 interface ISensorCardProps {
   item: Sensor
@@ -21,20 +20,14 @@ export default function SensorCard({item} : ISensorCardProps) {
   }
 
   return (
-    <Card>
-      <CardHeader avatar={
-          <Avatar sx={{ bgcolor: blue[500] }} aria-label="sensor-name">
-            {nameToCapital(item.name)}
-          </Avatar>
-        } title={item.name} subheader={coordinatesToString(item.coordinates)}>
+    <Card sx={{height: "100%"}}>
+      <CardHeader avatar={<DefaultAvatar name={item.name} ariaLabel='sensor-name'/>} title={<Text variant='h6'>{item.name}</Text>} subheader={coordinatesToString(item.coordinates)}>
       </CardHeader>
       <CardContent>
-        {item.description}
+        <Text noWrap>{item.description}</Text>
       </CardContent>
-      <CardActions>
-        <Button size='small'>
-          <Link to={`/details/${item.id}`}>See sensors details...</Link>
-        </Button>
+      <CardActions sx={{justifyContent: "flex-end", paddingRight: 2}}>
+        <Navigator to={`/details/${item.id}`}><SearchTwoToneIcon/>See sensors details...</Navigator>
       </CardActions>
     </Card>
   )

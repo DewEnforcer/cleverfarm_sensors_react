@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, Stack } from "@mui/material"
 import Text from "../general/Text"
 
 interface ISensorCoordinatesBoxProps {
@@ -8,15 +8,15 @@ interface ISensorCoordinatesBoxProps {
 
 export default function SensorCoordinatesBox({latitude, longitude} : ISensorCoordinatesBoxProps) {
   return (
-    <Box>
-        <Box>
-            <Text>latitude X: </Text>
-            <Text>{latitude}</Text>
-        </Box>
-        <Box>
-            <Text>latitude Y: </Text>
-            <Text>{longitude}</Text>
-        </Box>
-    </Box>
+    <Stack direction={"column"}>
+        <Stack direction={"row"} alignItems={"center"}>
+            <Text variant="h6">Longitude: </Text>
+            <Text marginLeft={"2px"}>{latitude}</Text>
+        </Stack>
+        <Stack direction={"row"} alignItems={"center"}>
+            <Text variant="h6">Latitude: </Text>
+            <Text marginLeft={"2px"}>{longitude}</Text>
+        </Stack>
+    </Stack>
   )
 }
