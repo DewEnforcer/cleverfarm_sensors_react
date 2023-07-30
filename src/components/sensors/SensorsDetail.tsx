@@ -31,7 +31,9 @@ export default function SensorsDetail() {
     name: sensor.name
   }
 
-  
+  //prevent some unexpected behavior in conditional render by creating a boolean var
+  const showDescription = sensor.description ? true : false;
+
   //i am aware that description is only required in the overview (in card), 
   //but it does not make sense from UI perspective
 
@@ -39,7 +41,7 @@ export default function SensorsDetail() {
     <SectionContainer maxWidth={false}>
       <Navigator to={".."}><ArrowBackIosNewTwoTone fontSize="small"/>To overview...</Navigator>
       <SectionTitle label={sensor?.name ?? "Unknown sensor"} variant="subtitle2"/>
-      {sensor?.description && <Text>{sensor.description}</Text>}
+      {showDescription && <Text>{sensor.description}</Text>}
       <Box>
         <Text variant="h6">Geography information:</Text>
         <SensorCoordinatesBox latitude={latitude} longitude={longitude}/>
