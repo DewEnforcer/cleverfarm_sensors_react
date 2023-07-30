@@ -1,4 +1,4 @@
-import httpservice from "./httpservice";
+import httpservice from "./httpService";
 
 import sensorsMock from "../sensors/sensors.json";
 import Sensor from "../interfaces/Sensor";

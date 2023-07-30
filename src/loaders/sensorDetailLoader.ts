@@ -11,11 +11,11 @@ const sensorDetailLoader = async ({params}: LoaderFunctionArgs) => {
     const id = params.id;
     if (!id) throw new Response("Sensor id not provided", {status: 500});
 
-    const sensor = await getSensorById(id);
+    const {data, success} = await getSensorById(id);
 
-    if (!sensor) throw new Response("Sensor not found", {status: 404});
+    if (!success) throw new Response("Sensor not found", {status: 404});
     
-    return {sensor};
+    return {sensor: data};
 }
 
 export default sensorDetailLoader;
