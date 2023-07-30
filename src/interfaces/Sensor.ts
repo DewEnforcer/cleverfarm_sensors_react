@@ -1,4 +1,4 @@
-import { CoordinateArray } from "../types/map";
+import { CoordinateArray } from "../types/Map";
 
 interface Sensor {
     id: string,

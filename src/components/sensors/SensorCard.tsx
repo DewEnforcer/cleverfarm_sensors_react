@@ -7,7 +7,7 @@ import Text from '../general/Text';
 import Navigator from '../general/Navigator';
 
 import Sensor from '../../interfaces/Sensor';
-import { CoordinateArray } from '../../types/map';
+import { CoordinateArray } from '../../types/Map';
 
 import DefaultAvatar from '../muiCustom/DefaultAvatar';
 

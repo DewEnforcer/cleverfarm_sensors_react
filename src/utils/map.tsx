@@ -10,7 +10,7 @@ import VectorLayer from "ol/layer/Vector";
 import { useGeographic } from "ol/proj";
 import {defaults as defaultControls} from 'ol/control.js';
 
-import { DefaultZoom, PointData } from "../types/map";
+import { DefaultZoom, PointData } from "../types/Map";
 import { ICustomController } from "../interfaces/CustomController";
 import CustomController from "../openlayer/CustomController";
 

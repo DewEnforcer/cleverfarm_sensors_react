@@ -1,0 +1,19 @@
+{
+    "DEFAULT_MAP_ZOOM_LEVEL": 8,
+    "icons": {
+        "sensorIcon": "map-pointer-xs.png"
+    },
+    "muiCustomStyles": {
+        "SectionTitle": {
+            "noWrap": true,
+            "sx": {
+              "mr": 2,
+              "fontFamily": "Roboto",
+              "fontWeight": 700,
+              "color": "rgb(75,75,75)",
+              "textDecoration": "none",
+              "fontSize": 30
+            }
+        }
+    }
+}

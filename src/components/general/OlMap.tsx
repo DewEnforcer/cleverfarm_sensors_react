@@ -4,9 +4,10 @@ import { Map, Overlay } from 'ol';
 import { createMap, createPopoverHook } from "../../utils/map";
 
 import { ICustomController } from "../../interfaces/CustomController";
-import { DefaultZoom, PointData } from "../../types/map";
+import { DefaultZoom, PointData } from "../../types/Map";
 
 import MapPopover from "./MapPopover";
+import defaultConfig from "../../config/default.json";
 
 import "ol/ol.css";
 
@@ -22,13 +23,14 @@ export default function OlMap({pointData, zoomLevel, customControls}: IOlMapProp
 
   const [popoverContent, setPopoverContent] = useState("");
 
+  const DEFAULT_ZOOM_LEVEL = defaultConfig.DEFAULT_MAP_ZOOM_LEVEL as DefaultZoom;
+
   //state not needed
   let map: Map | null = null;
   let popoverOverlay: Overlay | null = null;
 
-  const DEFAULT_ZOOM_LEVEL = 8; //move to config
 
-  useEffect(() => {//hook later
+  useEffect(() => {
     initializeOlMap();
   }, []);
 
