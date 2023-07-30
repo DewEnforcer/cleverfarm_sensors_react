@@ -10,11 +10,11 @@ class CustomController extends Control {
       const DEFAULT_CLASSNAME = 'ol-custom-controller ol-unselectable ol-control';
   
       const button = document.createElement('button');
+      const element = document.createElement('div');
+      
       button.innerHTML = options.htmlContent ?? "CB";
-
       button.title = options.title ?? "Custom title";
   
-      const element = document.createElement('div');
       element.className = `${DEFAULT_CLASSNAME} ${options.className}`;
       element.appendChild(button);
   

@@ -13,17 +13,22 @@ import { RouteErrorType } from '../../types/RouteErrorType';
 
 export default function SensorsDetailError() {
     let error = useRouteError() as RouteErrorType;
-
+    
+    const isErrorTrace = typeof error === "undefined";
+    
     return (
         <SectionContainer className={"error-wrapper sensors-error-wrapper"}>
             <Navigator to={"/"}><HomeTwoToneIcon/>To home</Navigator>
             <Stack direction={"row"} alignItems={"center"} gap={"5px"}>
                 <SentimentDissatisfiedTwoToneIcon fontSize='large'/>
-                <SectionTitle label="Oops! It seems this sensor no longer exists."/>
+                <SectionTitle label="Oops! It seems we ran into some problems while loading your sensors data."/>
             </Stack>
             <Text variant='h6'>Please contact support (patrik.medek@email.cz) or navigate back to homepage!</Text>
-            <Text>Error {error.status}</Text>
-            <Text>{error.data}</Text>
+            {isErrorTrace && <Text>Unknown error!</Text>}
+            {!isErrorTrace && <>
+                <Text>Error {error.status}</Text>
+                <Text>{error.data}</Text>
+            </>}
         </SectionContainer>
     )
 }
