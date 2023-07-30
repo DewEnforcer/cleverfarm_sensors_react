@@ -1,15 +1,17 @@
-import { defaultZoom, pointData } from '../../types/map'
 import { ICustomController } from '../../interfaces/CustomController';
+import { DefaultZoom, PointData } from '../../types/map';
+
 import { resetMapView } from '../../utils/map';
+
 import OlMap from '../general/OlMap';
 
 interface ISensorMapProps {
-    pointData: pointData,
+    pointData: PointData,
 }
 
 export default function SensorMap({pointData} : ISensorMapProps) {
     const SENSOR_ICON_SRC = "/src/assets/map-pointer-xs.png"; //move to cfg
-    const DEFAULT_ZOOM: defaultZoom = 8;
+    const DEFAULT_ZOOM: DefaultZoom = 8;
 
     const customControls: ICustomController[] = [
         {

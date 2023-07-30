@@ -1,5 +1,6 @@
-import { Paper } from "@mui/material";
 import {forwardRef} from "react";
+import { Paper } from "@mui/material";
+
 import Text from "./Text";
 
 interface IMapPopoverProps {

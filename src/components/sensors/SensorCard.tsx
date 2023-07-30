@@ -2,10 +2,13 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Sensor from '../../interfaces/Sensor';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import Text from '../general/Text';
 import Navigator from '../general/Navigator';
+
+import Sensor from '../../interfaces/Sensor';
+import { CoordinateArray } from '../../types/map';
+
 import DefaultAvatar from '../muiCustom/DefaultAvatar';
 
 interface ISensorCardProps {
@@ -13,7 +16,7 @@ interface ISensorCardProps {
 }
 
 export default function SensorCard({item} : ISensorCardProps) {
-  const coordinatesToString = (coords: number[]) => {
+  const coordinatesToString = (coords: CoordinateArray) => {
     if (!coords.length) return ``;
 
     return `${coords[0]} | ${coords[1]}`;

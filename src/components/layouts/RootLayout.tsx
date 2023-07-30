@@ -1,6 +1,6 @@
-import { Container, styled } from "@mui/material";
-import Header from "../general/Header"
 import {Outlet} from "react-router-dom";
+import { Container, styled } from "@mui/material";
+import Header from "../general/Header";
 import theme from "../../utils/theme";
 
 const RootContainer = styled(Container)({

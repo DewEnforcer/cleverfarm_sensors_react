@@ -1,14 +1,16 @@
+import { useEffect } from "react";
+import {useSelector, useDispatch} from "react-redux";
+
 import SensorList from "./SensorList";
 import SectionTitle from "../general/SectionTitle";
 import SectionContainer from "../muiCustom/SectionContainer";
+
 import { getSensors } from "../../services/sensorsService";
-import { useEffect } from "react";
-import {useSelector, useDispatch} from "react-redux";
-import { RootState } from "../../store";
+import { StoreRootState } from "../../store";
 import { setSensors } from "../../slices/sensorSlice";
 
 export default function SensorsOverview() {
-  const sensors = useSelector((state: RootState) => state.sensors.value);
+  const sensors = useSelector((state: StoreRootState) => state.sensors.value);
   const dispatch = useDispatch();
 
   useEffect(() => {

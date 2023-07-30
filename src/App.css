@@ -1,4 +1,5 @@
 /*CONTENTS OF STYLESHEET*/
+/*USE SHEET ONLY ON COMPONENTS OUTSIDE MUI SCOPE*/
 /*
 1. General
   1.1 - Default styles, vars
@@ -53,16 +54,9 @@ main {
 .map-wrapper {
   position: relative;
 }
-.map-wrapper .map {
-
-}
-.map-wrapper .map-popover {
-}
 .map-wrapper .map .reset-view-controller {
     top: 65px;
     left: 0.5em;
-}
-.map-wrapper .map .ol-custom-controller {
 }
 .map-wrapper .map .ol-custom-controller button {
   cursor: pointer;
@@ -85,11 +79,8 @@ main {
   height: 40vh;
 }
 
-/*1. Sensors overview*/
-.sensors-overview {
-
-}
+/*2. Sensors overview*/
 .sensors-overview .section-title {
   margin-bottom: var(--section-title-offset-bottom);
 }
-/*2. Sensors details*/
+/*3. Sensors details*/

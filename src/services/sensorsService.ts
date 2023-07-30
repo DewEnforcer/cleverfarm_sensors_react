@@ -14,3 +14,12 @@ export const getSensors = () => {
     })
     //return httpservice.get(epURL);
 }
+export const getSensorById = (id: string) => {
+    //mock ep
+    return new Promise<Sensor | undefined>((res, rej) => {
+        if (!data) return rej(new Error("No sensors data available to look through."));
+        
+        res(data.find(s => s.id === id))
+    })
+    //return httpservice.get(epURL, id);
+}

@@ -1,14 +1,18 @@
+import { useRouteError } from "react-router-dom";
+
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import SentimentDissatisfiedTwoToneIcon from '@mui/icons-material/SentimentDissatisfiedTwoTone';
-import { useRouteError } from "react-router-dom";
-import Text from "../general/Text";
-import SectionTitle from "../general/SectionTitle";
-import SectionContainer from "../muiCustom/SectionContainer";
-import Navigator from '../general/Navigator';
 import { Stack } from '@mui/material';
 
+import Text from "../general/Text";
+import SectionTitle from "../general/SectionTitle";
+import Navigator from '../general/Navigator';
+import SectionContainer from "../muiCustom/SectionContainer";
+
+import { RouteErrorType } from '../../types/RouteErrorType';
+
 export default function SensorsDetailError() {
-    let error = useRouteError() as any;
+    let error = useRouteError() as RouteErrorType;
 
     return (
         <SectionContainer className={"error-wrapper sensors-error-wrapper"}>

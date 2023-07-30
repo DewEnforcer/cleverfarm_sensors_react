@@ -3,10 +3,11 @@ import { RouterProvider } from 'react-router-dom';
 import router from "./utils/router";
 import theme from "./utils/theme";
 
-import { ThemeProvider} from '@mui/material/styles';
-import './App.css'
-import { Provider } from 'react-redux';
 import store from './store';
+import { ThemeProvider} from '@mui/material/styles';
+import { Provider } from 'react-redux';
+
+import './App.css'
 
 
  function App() {

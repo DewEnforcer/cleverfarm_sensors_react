@@ -1,5 +1,5 @@
-import { Container, ContainerProps, styled } from "@mui/material"
-import theme from "../../utils/theme"
+import { Container, ContainerProps, styled } from "@mui/material";
+import theme from "../../utils/theme";
 
 export default function SectionContainer({children, ...restprops}: ContainerProps) {
   const SectionContainer = styled(Container)({

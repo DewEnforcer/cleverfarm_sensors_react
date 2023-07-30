@@ -1,17 +1,18 @@
 import { useEffect, useState, useRef } from "react";
-import { createMap, createPopoverHook } from "../../utils/map";
-import { Map, Overlay } from 'ol';
-import { defaultZoom, pointData } from "../../types/map";
-
 import { Box } from "@mui/material";
+import { Map, Overlay } from 'ol';
+import { createMap, createPopoverHook } from "../../utils/map";
+
+import { ICustomController } from "../../interfaces/CustomController";
+import { DefaultZoom, PointData } from "../../types/map";
+
 import MapPopover from "./MapPopover";
 
 import "ol/ol.css";
-import { ICustomController } from "../../interfaces/CustomController";
 
 interface IOlMapProps {
-  pointData: pointData,
-  zoomLevel?: defaultZoom,
+  pointData: PointData,
+  zoomLevel?: DefaultZoom,
   customControls: ICustomController[]
 }
 

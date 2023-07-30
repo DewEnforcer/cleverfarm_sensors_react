@@ -1,4 +1,4 @@
-import { Feature, Map, MapEvent, Overlay } from "ol";
+import { Feature, Map, Overlay } from "ol";
 import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
 import View from "ol/View";
@@ -10,14 +10,14 @@ import VectorLayer from "ol/layer/Vector";
 import { useGeographic } from "ol/proj";
 import {defaults as defaultControls} from 'ol/control.js';
 
-import { defaultZoom, pointData } from "../types/map";
+import { DefaultZoom, PointData } from "../types/map";
 import { ICustomController } from "../interfaces/CustomController";
 import CustomController from "../openlayer/CustomController";
 
 type popoverHideFnType = () => any;
 type popoverShowFnType = (x: number, y: number, properties: any) => any;
 
-export const createMap = (target: string, defaultZoom: defaultZoom, pointData: pointData | null, mapEl: React.RefObject<HTMLDivElement>, customControls?: ICustomController[], popoverEl?: React.RefObject<HTMLDivElement>) => {
+export const createMap = (target: string, defaultZoom: DefaultZoom, pointData: PointData | null, mapEl: React.RefObject<HTMLDivElement>, customControls?: ICustomController[], popoverEl?: React.RefObject<HTMLDivElement>) => {
     //prevent duplicate map, should not happen in real env, but check for it anyway
     const copiedChildren = mapEl.current?.children ? [...mapEl.current.children] : [];
     
@@ -98,7 +98,7 @@ export const createPopoverOverlay = (map: Map, popoverEl: HTMLDivElement) => {
   return popup;
 }
 
-export const createPointerVectorLayer = (mapPointerData: pointData) => {
+export const createPointerVectorLayer = (mapPointerData: PointData) => {
   const {latitude, longitude, iconSource, name} = mapPointerData;
 
   const feature = new Feature({
@@ -134,7 +134,7 @@ export const createCustomController = (options: ICustomController) => {
     return controller;
 }
 //custom control fns
-export const resetMapView = (map: Map, longitude: number, latitude: number, zoom: defaultZoom) => {
+export const resetMapView = (map: Map, longitude: number, latitude: number, zoom: DefaultZoom) => {
   useGeographic();
 
   map.setView(new View({

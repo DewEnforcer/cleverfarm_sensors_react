@@ -1,18 +1,21 @@
 import { useParams } from "react-router-dom"
+import {useSelector} from "react-redux";
+
 import { Box } from "@mui/material";
+import { ArrowBackIosNewTwoTone } from "@mui/icons-material";
+
 import SectionTitle from "../general/SectionTitle";
 import Text from "../general/Text";
 import SensorCoordinatesBox from "./SensorCoordinatesBox";
 import SensorMap from "./SensorMap";
 import SectionContainer from "../muiCustom/SectionContainer";
 import Navigator from "../general/Navigator";
-import { ArrowBackIosNewTwoTone } from "@mui/icons-material";
-import {useSelector} from "react-redux";
-import { RootState } from "../../store";
 import SensorsDetailError from "../errors/SensorsDetailError";
 
+import { StoreRootState } from "../../store";
+
 export default function SensorsDetail() {
-  const sensors = useSelector((state: RootState) => state.sensors.value);
+  const sensors = useSelector((state: StoreRootState) => state.sensors.value);
 
   const {id} = useParams();
 
@@ -30,8 +33,7 @@ export default function SensorsDetail() {
 
   
   //i am aware that description is only required in the overview (in card), 
-  //but it does not make any sense from UI perspective, in fact, 
-  //i believe it should be the other way around if we want the description only in one place
+  //but it does not make sense from UI perspective
 
   return (
     <SectionContainer maxWidth={false}>

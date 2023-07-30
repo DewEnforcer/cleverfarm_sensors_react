@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import { Link } from 'react-router-dom';
+
 import Text from './Text';
 
 export default function Header() {

@@ -1,4 +1,5 @@
 import { Box, Grid } from "@mui/material";
+
 import Sensor from "../../interfaces/Sensor";
 import SensorCard from "./SensorCard";
 
